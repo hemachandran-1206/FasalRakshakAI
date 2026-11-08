@@ -5,17 +5,6 @@ A farmer uploads a leaf photo; AI gives a first diagnosis, weather risk and care
 
 **Stack:** React 19 + Vite + react-leaflet · FastAPI + SQLAlchemy 2 · PostgreSQL (SQLite in tests) · MobileNetV2 + YOLO11 · Open-Meteo.
 
-## Status
-
-| Phase | Scope | State |
-|---|---|---|
-| 0 | DB + API skeleton, detection, catalogue | Done |
-| 1 | Weather risk (Open-Meteo + ICAR-CPRI rule) | Done |
-| 2 | GPS, reports, hotspots, map | Done |
-| 3 | Expert validation, admin/expert roles, case codes, triage | Done |
-| 4 | Multilingual advisories (EN/HI/PA), staff verification, CSV import/export | Done; the 26 diseases still need translations written and verified |
-| 5 | About/credits page, free-hosting plan, Dockerfile | Done; deployment itself is yours to run (see section 10) |
-
 ---
 
 ## 1. Overall workflow
@@ -66,6 +55,7 @@ Step by step:
 ```
 HS202_SIH2026/
 ├── README.md                      this file
+├── run-demo.sh                    one command: backend + website (+ public link)
 ├── docker-compose.yml             Postgres 16 (user/pass/db = hs202)
 ├── notebooks/
 │   └── phase1_weather_rules.ipynb weather rule experiments
@@ -215,41 +205,51 @@ HS202_SIH2026/
 | `ExpertPage.jsx` + `ReviewPanel.jsx` | Expert queue and decision form, with optional advice for the disease. |
 | `ImageWithBoxes.jsx` | Photo with pest bounding boxes. |
 | `WeatherCards.jsx` | Weather risk cards. |
-| `vite.config.js` | Dev server on 5173; proxies `/api` to the backend (**8001**). |
+| `vite.config.js` | Dev server on 5173; proxies `/api` to the backend (**8000**). |
 
 ---
 
 ## 4. Run the project
 
-Requirements: Python 3.10+, Node 18+, Docker (or a local PostgreSQL).
+Requirements: Python 3.10+, Node 18+, and a PostgreSQL database (Docker, a local install, or a free Supabase project).
 
-### Database
+### One command (after the one-time setup below)
 ```bash
-docker compose up -d db          # from the project root
+./run-demo.sh             # backend + website, local only -> http://localhost:5173
+./run-demo.sh --public    # also prints a free public https address (Cloudflare quick tunnel)
+./run-demo.sh --build     # rebuild the website first (after frontend code changes)
 ```
-No Docker? Install Postgres and create user/db `hs202`.
+Press Ctrl+C to stop everything. Logs are in `.demo-logs/`. The first start downloads the AI models and can take a few minutes. The public address changes on every run and only works while your computer is on and the script is running.
 
-### Backend
+### One-time setup
 ```bash
-cd backend
-python3 -m venv .venv && source .venv/bin/activate
-# torch first: CPU build
+# 1. database: Docker, or use a Supabase "Session pooler" connection string
+docker compose up -d db
+
+# 2. backend
+python3 -m venv .venv && source .venv/bin/activate        # at the project root
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-pip install -r requirements.txt
-cp .env.example .env              # edit DATABASE_URL / JWT_SECRET if needed
-python scripts/create_admin.py    # first admin
-uvicorn app.main:app --reload --port 8001
-```
-Open `http://127.0.0.1:8001/docs` (the root `/` returns Not Found by design). First start downloads the models from Hugging Face.
+pip install -r backend/requirements.txt
+cp backend/.env.example backend/.env       # set DATABASE_URL and JWT_SECRET (see section 5)
+cd backend && python scripts/create_admin.py && cd ..      # first admin
 
-### Frontend
-```bash
-cd frontend
-cp .env.example .env
-npm install
-npm run dev                       # http://localhost:5173
+# 3. website
+cd frontend && npm install && cd ..
 ```
-Make sure the `/api` proxy target in `vite.config.js` is `http://127.0.0.1:8001`.
+The website proxies `/api` to the backend on port **8000** (`frontend/vite.config.js`); keep the two in sync if you change a port.
+
+### Run the parts by hand (what the script does)
+```bash
+cd backend && uvicorn app.main:app --port 8000          # terminal 1; API docs at http://127.0.0.1:8000/docs
+cd frontend && npm run build && npx vite preview --host  # terminal 2; website at http://localhost:5173
+```
+For development with hot reload use `npm run dev` instead of build + preview.
+
+### Public link (free Cloudflare quick tunnel)
+```bash
+mkdir -p ~/bin && curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o ~/bin/cloudflared && chmod +x ~/bin/cloudflared
+```
+`./run-demo.sh --public` then uses it. If your network blocks UDP (many campus networks do), the script already forces the TCP-based protocol (`--protocol http2`).
 
 ### Optional
 ```bash
@@ -316,29 +316,29 @@ Privacy: photos are visible only to admin or the assigned expert; admin sees exa
 
 ---
 
-## 10. Free deployment (Phase 5)
+## 10. Hosting (free)
 
-Everything below has a free tier; confirm current limits when you sign up, they change. Checked November 2026 against the providers' published terms and third-party comparisons.
+What is free and what is not, checked November 2026 against providers' published terms; confirm current limits when you sign up.
 
 | Part | Free option | Notes |
 |---|---|---|
-| Frontend | **Cloudflare Pages** (static, unlimited requests, no card; commercial use allowed). Vercel Hobby also works but is limited to non-commercial use. | Build command `npm run build`, output `dist`, env `VITE_API_URL` = backend URL. |
-| Database | **Supabase** free Postgres: 500 MB, 5 GB bandwidth/month, **paused after a week of inactivity** (restore from the dashboard). | Use the Session pooler connection string; add `?sslmode=require`. |
-| Backend | The hard part: PyTorch + YOLO need roughly 1.5–2 GB RAM, so 512 MB hosts such as Render's free tier will not fit. Options: **Hugging Face Docker Space** (CPU Basic, 2 vCPU / 16 GB, sleeps when idle; I could not confirm whether Docker Spaces are free on every account, so check when creating it), **Oracle Cloud Always Free** (needs a card for sign-up), or run it on your own machine with a free **Cloudflare Tunnel** for demo day. | `backend/Dockerfile` works on all of these. |
-| Weather | **Open-Meteo** free API: non-commercial use, under 10,000 calls/day, attribution required (shown on the About page and footer). | Shared hosts can hit per-IP limits sooner. |
-| Map tiles | OpenStreetMap standard tiles, fine for a low-traffic demo; heavy use needs a different tile provider (see the OSM tile usage policy). | Attribution is already on the map. |
+| Database | **Supabase** free Postgres: 500 MB, 5 GB bandwidth/month, **paused after a week of inactivity** (restore from the dashboard) | Use the **Session pooler** connection string (the direct host is IPv6-only and fails on many networks). Write it as `postgresql+psycopg2://…?sslmode=require`. URL-encode special characters in the password (`@` → `%40`, `#` → `%23`) or use letters and digits only. |
+| Website | **Cloudflare Pages** (static; commercial use allowed). Vercel Hobby is non-commercial only. | Needs `VITE_API_URL` pointing at an https backend. |
+| Backend | PyTorch + YOLO need roughly 1.5–2 GB RAM, so 512 MB hosts such as Render's free tier do not fit, and Hugging Face **Docker Spaces are not free** (the option is locked on free accounts). Options: **Oracle Cloud Always Free VM** (always on; needs a card to sign up), Google Cloud Run (needs billing card; sleeps when idle), or your own computer with `./run-demo.sh --public` for demos. | `backend/Dockerfile` runs on any container host. |
+| Weather | **Open-Meteo** free API: non-commercial, under 10,000 calls/day, attribution required (shown on the About page and footer) | Shared hosts can hit per-IP limits sooner. |
+| Map tiles | OpenStreetMap standard tiles; fine for a low-traffic project | Attribution is on the map. |
 
-Backend environment on the host: `DATABASE_URL`, `JWT_SECRET` (long random string), `ENVIRONMENT=production`, `CORS_ORIGINS` (your frontend URL), `TRUST_PROXY_HEADERS=true`. Then run `python scripts/create_admin.py` once (a shell on the host, or locally against the same `DATABASE_URL`).
+Backend settings on any host: `DATABASE_URL`, `JWT_SECRET` (long random string), `ENVIRONMENT=production`, `TRUST_PROXY_HEADERS=true`, and `CORS_ORIGINS` if the website is on a different address than the API.
 
-**Free-tier caveats**
-- Uploaded photos are written to local disk. On free hosts the disk is wiped on restart, so old photos disappear while the case records stay. Moving photos to Supabase Storage (1 GB free) is the fix and is not built yet.
-- A sleeping backend takes a while to wake and reload the models; the first request after idle is slow.
+**Caveats**
+- A quick-tunnel address is temporary: it changes every run and dies when your computer sleeps or the script stops. It is fine for a demo, not for a link in a report.
+- Where the disk is wiped on restart (most free hosts), uploaded photos disappear while case records stay. On your own computer or a VM the photos persist.
 - Ultralytics is AGPL-3.0: if you host this publicly, publish the source of the deployed app (the GitHub repo does that) and keep the licence notice.
 - The plant-disease weights are published with a licence labelled "other"; confirm with the author before any wider or commercial release.
 
 ## 11. Credits
 
-All credits and licences are on the in-app **About** page, generated from `frontend/src/credits.js`. Add friends' names to `TEAM` there.
+All credits and licences are on the in-app **About** page, generated from `frontend/src/credits.js`. The team table (name and entry number) is in the same file.
 
 ## 12. References
 

@@ -197,3 +197,5 @@ footer { margin-top:26px; padding-top:16px; border-top:1px solid var(--line); fo
 .credit-list { list-style:none; margin:0; padding:0; } .credit-list li { display:grid; gap:2px; padding:11px 0; border-bottom:1px solid var(--line); } .credit-list li:last-child { border:0; }
 .credit-list .badge { margin:4px 0 0; justify-self:start; white-space:normal; }
 footer .linkbtn { font-size:.84rem; padding:6px 0; text-align:left; }
+
+table.team tbody tr { cursor:default; } table.team tbody tr:hover { background:transparent; } .mono { font-family:ui-monospace,Menlo,monospace; letter-spacing:.02em; }

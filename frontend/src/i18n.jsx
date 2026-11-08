@@ -135,6 +135,8 @@ const S = {
   about_credits_intro: { en: "This project stands on free and open work by many people. Thank you to everyone below. Licences are shown as published by their owners.", hi: "यह प्रोजेक्ट कई लोगों के मुफ़्त और खुले कार्य पर टिका है। नीचे दिए सभी का धन्यवाद। लाइसेंस वैसे ही दिखाए गए हैं जैसे उनके मालिकों ने प्रकाशित किए हैं।", pa: "ਇਹ ਪ੍ਰੋਜੈਕਟ ਕਈ ਲੋਕਾਂ ਦੇ ਮੁਫ਼ਤ ਅਤੇ ਖੁੱਲ੍ਹੇ ਕੰਮ ਉੱਤੇ ਟਿਕਿਆ ਹੈ। ਹੇਠਾਂ ਦਿੱਤੇ ਸਾਰਿਆਂ ਦਾ ਧੰਨਵਾਦ। ਲਾਇਸੰਸ ਉਸੇ ਤਰ੍ਹਾਂ ਦਿਖਾਏ ਗਏ ਹਨ ਜਿਵੇਂ ਉਨ੍ਹਾਂ ਦੇ ਮਾਲਕਾਂ ਨੇ ਪ੍ਰਕਾਸ਼ਿਤ ਕੀਤੇ ਹਨ।" },
   about_licence: { en: "Licence", hi: "लाइसेंस", pa: "ਲਾਇਸੰਸ" },
   footer_credits: { en: "Weather data by Open-Meteo.com · Map © OpenStreetMap contributors · All credits", hi: "मौसम डेटा Open-Meteo.com से · मानचित्र © OpenStreetMap योगदानकर्ता · सभी श्रेय", pa: "ਮੌਸਮ ਡੇਟਾ Open-Meteo.com ਤੋਂ · ਨਕਸ਼ਾ © OpenStreetMap ਯੋਗਦਾਨੀ · ਸਾਰਾ ਸਿਹਰਾ" },
+  th_name: { en: "Name", hi: "नाम", pa: "ਨਾਮ" },
+  th_entry: { en: "Entry number", hi: "एंट्री नंबर", pa: "ਐਂਟਰੀ ਨੰਬਰ" },
 };
 
 const Ctx = createContext({ lang: "en", setLang: () => {}, t: (k) => k });

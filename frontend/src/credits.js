@@ -1,8 +1,18 @@
-// Credits shown on the About page. Edit this file to add team members or sources — no other code needs to change.
+// Team and credits shown on the About page. Edit this file to change names or sources — no other code needs to change.
 // `license` is what the owner publishes; "check" notes mean the licence was unclear when this was written.
+export const TEAM_TITLE = "HS202 2026";
+// Name, entry number. Add or reorder rows here; the About page renders them as a table.
 export const TEAM = [
-  { name: "Chand (hemachandran-1206)", role: "Project lead and developer, IIT Ropar", url: "https://github.com/hemachandran-1206" },
-  // { name: "Friend's name", role: "What they worked on", url: "https://github.com/their-handle" },
+  { name: "Hemachandran V", entry: "2024CSB1349" },
+  { name: "Malothu Jeswanth", entry: "2024CSB1129" },
+  { name: "Maloth Anil", entry: "2024CSB1128" },
+  { name: "Borelli Sujay Kumar", entry: "2024CSB1110" },
+  { name: "Para Arun Gopi Chandu", entry: "2024CSB1136" },
+  { name: "Nutalapati Vivek", entry: "2024CSB1138" },
+  { name: "Badavath Naveen", entry: "2024CSB1107" },
+  { name: "Shaik Hazrath Bilal", entry: "2024CSB1152" },
+  { name: "Yenuganti Hemanath", entry: "2024CSB1172" },
+  { name: "Rathlavath Jashvanth", entry: "2024CSB1376" },
 ];
 
 export const CREDITS = [

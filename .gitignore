@@ -36,3 +36,6 @@ temp_upload.jpg
 # editor
 .idea/
 .vscode/
+
+# demo script logs
+.demo-logs/

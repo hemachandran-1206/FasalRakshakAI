@@ -1,4 +1,4 @@
-import { CREDITS, TEAM } from "../credits.js";
+import { CREDITS, TEAM, TEAM_TITLE } from "../credits.js";
 import { useLang } from "../i18n.jsx";
 import Icon from "./Icon.jsx";
 
@@ -9,15 +9,17 @@ export default function AboutPage() {
       <div className="pagehead"><span className="eyebrow">{t("hero_eyebrow")}</span><h1>{t("about_title")}</h1><p>{t("about_intro")}</p></div>
 
       <div className="card notice"><Icon name="alert" size={18} /> {t("about_warn")}</div>
-      <div className="two">
-        <div className="card white"><h2><Icon name="shield" size={18} /> {t("about_privacy").split(":")[0]}</h2><p className="muted">{t("about_privacy")}</p></div>
-        <div className="card white">
-          <h2><Icon name="users" size={18} /> {t("about_team")}</h2>
-          <ul className="credit-list">{TEAM.map((m) => (
-            <li key={m.name}><strong>{m.url ? <a href={m.url} target="_blank" rel="noreferrer noopener">{m.name}</a> : m.name}</strong><span className="muted">{m.role}</span></li>
-          ))}</ul>
-          <p className="muted">{t("about_ai_built")}</p>
+      <div className="card white"><h2><Icon name="shield" size={18} /> {t("about_privacy").split(":")[0]}</h2><p className="muted">{t("about_privacy")}</p></div>
+
+      <div className="card white">
+        <h2><Icon name="users" size={18} /> {TEAM_TITLE}</h2>
+        <div className="tablewrap">
+          <table className="team">
+            <thead><tr><th>{t("th_name")}</th><th>{t("th_entry")}</th></tr></thead>
+            <tbody>{TEAM.map((m) => <tr key={m.entry}><td>{m.name}</td><td className="mono">{m.entry}</td></tr>)}</tbody>
+          </table>
         </div>
+        <p className="muted" style={{ marginTop: 14 }}>{t("about_ai_built")}</p>
       </div>
 
       <h2 style={{ marginTop: 28 }}>{t("about_credits")}</h2>
