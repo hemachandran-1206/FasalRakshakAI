@@ -1,0 +1,38 @@
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.db
+
+# secrets and local config
+.env
+backend/.env
+frontend/.env
+
+# node and build output
+node_modules/
+dist/
+
+# runtime data
+backend/uploads/
+uploads/
+/results/
+
+# large data and model files
+/datasets/
+/data/
+*.pt
+*.pth
+*.onnx
+*.zip
+
+# overlay folders and junk
+hs202-phase*/
+hs202-ui/
+temp_upload.jpg
+.DS_Store
+
+# editor
+.idea/
+.vscode/

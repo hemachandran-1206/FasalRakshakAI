@@ -1,0 +1,610 @@
+{
+ "version": 1,
+ "generated_from": "PlantExpertVQA sample labels.csv + manual Punjab additions",
+ "crops": [
+  {
+   "id": "apple",
+   "name": "Apple",
+   "model_crop": "Apple",
+   "ai_supported": true,
+   "aliases": [
+    "apple"
+   ],
+   "diseases": [
+    "Apple Scab",
+    "Black Rot",
+    "Cedar Apple Rust",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "bitter_gourd",
+   "name": "Bitter gourd",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "bitter gourd",
+    "bitter_gourd"
+   ],
+   "diseases": [
+    "Anthracnose",
+    "Downy Mildew",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "blueberry",
+   "name": "Blueberry",
+   "model_crop": "Blueberry",
+   "ai_supported": false,
+   "aliases": [
+    "blueberry"
+   ],
+   "diseases": [
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "bottle_gourd",
+   "name": "Bottle gourd",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "bottle gourd",
+    "bottle_gourd"
+   ],
+   "diseases": [
+    "Anthracnose",
+    "Downy Mildew",
+    "Natural senescence",
+    "Nutritional deficiency",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "cauliflower",
+   "name": "Cauliflower",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "cauliflower"
+   ],
+   "diseases": [
+    "Black Rot",
+    "Downy Mildew"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "cherry",
+   "name": "Cherry",
+   "model_crop": "Cherry",
+   "ai_supported": true,
+   "aliases": [
+    "cherry"
+   ],
+   "diseases": [
+    "Powdery Mildew",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "citrus",
+   "name": "Citrus (orange, lemon, kinnow)",
+   "model_crop": "Orange",
+   "ai_supported": false,
+   "aliases": [
+    "citrus",
+    "citrus (orange, lemon, kinnow)",
+    "lemon",
+    "orange"
+   ],
+   "diseases": [
+    "Bacterial Canker",
+    "Bacterial Spot",
+    "Haunglongbing (Citrus Greening)",
+    "Leaf Spot",
+    "Healthy"
+   ],
+   "sample_images": 30,
+   "source": "dataset"
+  },
+  {
+   "id": "corn",
+   "name": "Corn (Maize)",
+   "model_crop": "Corn",
+   "ai_supported": true,
+   "aliases": [
+    "corn",
+    "corn (maize)"
+   ],
+   "diseases": [
+    "Cercospora Leaf Spot (Gray Leaf Spot)",
+    "Common Rust",
+    "Maize Lethal Necrosis",
+    "Maize Streak Virus",
+    "Northern Leaf Blight",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "cotton",
+   "name": "Cotton",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "cotton"
+   ],
+   "diseases": [
+    "Bacterial Blight",
+    "Fusarium Wilt",
+    "Leaf Hopper (Jassids)",
+    "Leaf Reddening",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "cucumber",
+   "name": "Cucumber",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "cucumber"
+   ],
+   "diseases": [
+    "Anthracnose",
+    "Downy Mildew",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "eggplant",
+   "name": "Eggplant (Brinjal)",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "eggplant",
+    "eggplant (brinjal)",
+    "eggplant brinjal"
+   ],
+   "diseases": [
+    "Leaf Spot",
+    "Mosaic Virus",
+    "Healthy"
+   ],
+   "sample_images": 20,
+   "source": "dataset"
+  },
+  {
+   "id": "grape",
+   "name": "Grape",
+   "model_crop": "Grape",
+   "ai_supported": true,
+   "aliases": [
+    "grape"
+   ],
+   "diseases": [
+    "Black Rot",
+    "Downy Mildew",
+    "Esca (Black Measles)",
+    "Leaf Blight (Isariopsis Leaf Spot)",
+    "Powdery Mildew",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "guava",
+   "name": "Guava",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "guava"
+   ],
+   "diseases": [
+    "Leaf Curling",
+    "Leaf Spot",
+    "Nutritional deficiency",
+    "Powdery Mildew"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "hibiscus",
+   "name": "Hibiscus",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "hibiscus"
+   ],
+   "diseases": [
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "jackfruit",
+   "name": "Jackfruit",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "jackfruit"
+   ],
+   "diseases": [
+    "Anthracnose",
+    "Leaf Spot",
+    "Phyllosticta Leaf Spot",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "jasmine",
+   "name": "Jasmine",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "arabian jasmine",
+    "jasmine"
+   ],
+   "diseases": [
+    "Anthracnose",
+    "Natural senescence",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "litchi",
+   "name": "Litchi",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "litchi"
+   ],
+   "diseases": [
+    "Black Spot",
+    "Natural senescence",
+    "White Spot",
+    "Yellow Mosaic Virus"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "mango",
+   "name": "Mango",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "mango"
+   ],
+   "diseases": [
+    "Bacterial Canker",
+    "Dieback",
+    "Natural senescence",
+    "Powdery Mildew",
+    "Sooty Mold",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "mustard",
+   "name": "Mustard",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "mustard",
+    "mustard"
+   ],
+   "diseases": [
+    "Alternaria Blight",
+    "Downy Mildew",
+    "Powdery Mildew",
+    "White Rust",
+    "Healthy"
+   ],
+   "sample_images": 0,
+   "source": "manual (verify with PAU)"
+  },
+  {
+   "id": "papaya",
+   "name": "Papaya",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "papaya"
+   ],
+   "diseases": [
+    "Leaf Curl Virus",
+    "Mosaic Virus",
+    "Ringspot Virus",
+    "Spider Mites",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "pea",
+   "name": "Pea",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "pea",
+    "peas"
+   ],
+   "diseases": [
+    "Anthracnose",
+    "Ascochyta Blight",
+    "Botrytis Blight",
+    "Downy Mildew",
+    "Pod Borer Damage",
+    "Powdery Mildew",
+    "Healthy"
+   ],
+   "sample_images": 20,
+   "source": "dataset"
+  },
+  {
+   "id": "peach",
+   "name": "Peach",
+   "model_crop": "Peach",
+   "ai_supported": true,
+   "aliases": [
+    "peach"
+   ],
+   "diseases": [
+    "Bacterial Spot",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "pepper",
+   "name": "Pepper / Capsicum",
+   "model_crop": "Pepper",
+   "ai_supported": true,
+   "aliases": [
+    "pepper",
+    "pepper / capsicum",
+    "pepper bell"
+   ],
+   "diseases": [
+    "Anthracnose",
+    "Bacterial Spot",
+    "Healthy"
+   ],
+   "sample_images": 20,
+   "source": "dataset"
+  },
+  {
+   "id": "potato",
+   "name": "Potato",
+   "model_crop": "Potato",
+   "ai_supported": true,
+   "aliases": [
+    "potato"
+   ],
+   "diseases": [
+    "Early Blight",
+    "Late Blight",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "raspberry",
+   "name": "Raspberry",
+   "model_crop": "Raspberry",
+   "ai_supported": false,
+   "aliases": [
+    "raspberry"
+   ],
+   "diseases": [
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "rice",
+   "name": "Rice",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "rice"
+   ],
+   "diseases": [
+    "Bacterial Leaf Blight",
+    "Blast",
+    "Brown Spot",
+    "Tungro",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "rubber",
+   "name": "Rubber",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "rubber"
+   ],
+   "diseases": [
+    "Leaf Spot Generic",
+    "Natural senescence",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "soybean",
+   "name": "Soybean",
+   "model_crop": "Soybean",
+   "ai_supported": false,
+   "aliases": [
+    "soybean"
+   ],
+   "diseases": [
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "squash",
+   "name": "Squash",
+   "model_crop": "Squash",
+   "ai_supported": false,
+   "aliases": [
+    "squash"
+   ],
+   "diseases": [
+    "Powdery Mildew",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "strawberry",
+   "name": "Strawberry",
+   "model_crop": "Strawberry",
+   "ai_supported": true,
+   "aliases": [
+    "strawberry"
+   ],
+   "diseases": [
+    "Leaf Scorch",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "sugarcane",
+   "name": "Sugarcane",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "sugarcane",
+    "sugarcane"
+   ],
+   "diseases": [
+    "Pokkah Boeng",
+    "Red Rot",
+    "Smut",
+    "Healthy"
+   ],
+   "sample_images": 0,
+   "source": "manual (verify with PAU)"
+  },
+  {
+   "id": "sunflower",
+   "name": "Sunflower",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "sunflower"
+   ],
+   "diseases": [
+    "Downy Mildew",
+    "Powdery Mildew",
+    "Wilting (cause unclear)",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "tea",
+   "name": "Tea",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "tea"
+   ],
+   "diseases": [
+    "Gray Blight",
+    "Looper Damage",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "tomato",
+   "name": "Tomato",
+   "model_crop": "Tomato",
+   "ai_supported": true,
+   "aliases": [
+    "tomato"
+   ],
+   "diseases": [
+    "Bacterial Spot",
+    "Early Blight",
+    "Late Blight",
+    "Leaf Curl Virus",
+    "Leaf Mold",
+    "Septoria Leaf Spot",
+    "Spider Mites (Two-Spotted Spider Mite)",
+    "Target Spot",
+    "Tomato Mosaic Virus",
+    "Tomato Yellow Leaf Curl Virus",
+    "Healthy"
+   ],
+   "sample_images": 10,
+   "source": "dataset"
+  },
+  {
+   "id": "wheat",
+   "name": "Wheat",
+   "model_crop": null,
+   "ai_supported": false,
+   "aliases": [
+    "wheat",
+    "wheat"
+   ],
+   "diseases": [
+    "Brown Rust (Leaf Rust)",
+    "Karnal Bunt",
+    "Loose Smut",
+    "Powdery Mildew",
+    "Yellow Rust (Stripe Rust)",
+    "Healthy"
+   ],
+   "sample_images": 0,
+   "source": "manual (verify with PAU)"
+  }
+ ]
+}

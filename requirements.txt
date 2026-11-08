@@ -1,0 +1,6 @@
+torch
+transformers
+ultralytics
+huggingface_hub
+Pillow
+streamlit
